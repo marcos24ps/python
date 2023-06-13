@@ -10,6 +10,13 @@ class padre():
     __telefono=None
     __contador=None
 
+    staticmethod #static
+    def metodo_estatico():
+        return "Hola"
+    
+    def __str__(self) -> str:
+        return self
+    
     def __init__(self,nombre,edad,telefono):
         
         self.__nombre=nombre
