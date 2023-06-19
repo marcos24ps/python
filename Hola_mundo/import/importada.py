@@ -3,6 +3,7 @@ import re
 
 class Diccionario:
 
+    
     def __init__(self,arr):
         self.__arr=arr
         self.__busqueda=None
@@ -74,8 +75,10 @@ class Diccionario:
         ret=False
         if self.__buscar(id,nombre)==False and self.__validar_formato(id)!=-999:
   
-            self.__arr.append({"id":id,"nombre":nombre,"nota":nota})
-            ret= True
+            if isinstance(nota,float):
+                nota=float(nota)
+                self.__arr.append({"id":id,"nombre":nombre,"nota":nota})
+                ret= True
         
         return ret
     
@@ -89,6 +92,21 @@ class Diccionario:
                 if id in j["id"]:
                     
                     del self.__arr[i]
+                    ret=True
+                    break
+            
+        return ret
+    
+    def modificar(self,id,nota):
+        
+        ret=False
+        if  self.__validar_formato(id)!=-999:
+
+            for i,j in enumerate(self.__arr):
+                
+                if id in j["id"]:
+                    
+                    self.__arr[i]["nota"]=nota
                     ret=True
                     break
             
