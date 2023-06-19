@@ -95,12 +95,12 @@ def update_registro(cur):
         
 def main():
     
-    paths="..\\..\\sql_lite\\db2"
-    if path.exists(paths):
+    db_path="..\\..\\sql_lite\\db2"
+    if path.exists(db_path):
         
         try:
             
-            conn=sqlite3.connect(paths)
+            conn=sqlite3.connect(db_path)
             cur=conn.cursor()
             
         except Exception as e:
@@ -127,6 +127,6 @@ def main():
         conn.close()
     else:
         
-        print("Ruta no encontrada",path.abspath(paths))
+        print("Ruta no encontrada",path.abspath(db_path))
     
 main()
